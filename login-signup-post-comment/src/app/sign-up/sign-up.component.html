@@ -1,0 +1,28 @@
+<form class="signUp" #signUp="ngForm" (ngSubmit)="createUser(signUp)">
+  <div class="form-group col-md-12">
+    <h1 style="text-align: center; color:#fff; background: dimgrey; border-radius: 20px; padding: 20px;" (click)='openSignUpForm()'>Sign Up</h1>
+  </div>
+  <div class="form-row" style="margin: 3% auto">
+    <div class="col-md-6" >
+      <input class="form-control" name="fname" #fname="ngModel" [(ngModel)] = "firstName" placeholder="First Name" required>
+    </div>
+    <div class="col-md-6">
+      <input class="form-control" name="lname" #lname="ngModel" [(ngModel)] = "lastName" placeholder="Last Name" required>
+    </div>
+  </div>
+  <div class="form-row" style="margin: 3% auto">
+    <div class="col-md-12">
+      <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)] = "userEmail" placeholder="Email" required>
+    </div>
+  </div>
+  <div class="form-row" style="margin: 3% auto">
+    <div class="col-md-12">
+      <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)] = "userPassword" placeholder="Password" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12" >
+      <button type="submit" [disabled] = "!signUp.valid" class="btn btn-lg btn-block btn-info"><i class="fa fa-save" style="margin: 0px 5px 0px 0px"></i>Create Account</button>
+    </div>
+  </div>
+</form>

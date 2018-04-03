@@ -1,0 +1,30 @@
+
+<form class="comment-group" #commentform="ngForm" (ngSubmit)="createComments(commentform)">
+  <div class="form-row">
+    <div class="col-md-12" style="text-align: center; margin: 10px 10px 10px 10px; font-size: 50px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; background: navajowhite; border: solid gray 5px; border-radius: 10px; text-shadow: 2px 2px papayawhip;">
+        {{post}}
+    </div>
+  </div>
+  <div class="form-row" style="margin: 10px 10px 10px 10px;">
+    <div class="col-md-10">
+      <input class="form-control" name="comments" #comment="ngModel" [(ngModel)]="userComments">
+    </div>
+    <div class="md-col-2" style="text-align: center">
+      <button type="submit" [disabled] = "!commentform.valid" class="btn-comment">Comments</button>
+    </div>
+  </div>
+  <div class="container" >
+    <ul class="list-group">
+      <li class="list-group-item" style="color: papayawhip ;background-color: peru; font-style: italic; font-size: 20px; margin: 5px 5px 5px 5px" *ngFor="let comment of comments_list" [ngClass]="{'is-active': comment.isActive}">
+        <div class="form-row">
+          <div class="col-md-10">
+            {{comment.post}}
+          </div>
+          <div class="col-md-2">
+            <img src="../../assets/ic_delete.png" style="width: 25px; height: 25px; text-align: right">
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</form>

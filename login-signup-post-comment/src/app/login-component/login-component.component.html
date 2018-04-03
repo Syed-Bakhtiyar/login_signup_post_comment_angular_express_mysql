@@ -1,0 +1,25 @@
+<form class="login-form" #loginform='ngForm' (ngSubmit) = 'onLogin(loginform)'>
+  <div class="form-group col-md-12" >
+    <h1 style="text-align: center; color:#fff; background: dimgrey; border-radius: 20px; padding: 20px;" (click)='openSignUpForm()'>Bakhtiyar Application</h1>
+  </div>
+  <div class="form-row" style="margin: 10px 0px 0px 0px">    
+    <div class="form-group col-md-12">
+      <input class="form-control" name="email" #email="ngModel" [(ngModel)] = "userEmail" placeholder="Email" required>
+    </div>  
+  </div>
+  <div class="form-row" style="margin: 0px 0px 0px 0px">
+    <div class="form-group col-md-12">    
+        <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)] = "userPassword" placeholder="Password" required>    
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12" >
+      <button type="submit" [disabled] = "!loginform.valid" class="btn btn-lg btn-block btn-info"><i class="fa fa-save" style="margin: 0px 5px 0px 0px"></i>Login</button>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12" >
+      <div style="text-align: center; color: blue; text-decoration: underline" (click)='openSignUpForm()'>Create Account</div>
+    </div>
+  </div>
+</form>

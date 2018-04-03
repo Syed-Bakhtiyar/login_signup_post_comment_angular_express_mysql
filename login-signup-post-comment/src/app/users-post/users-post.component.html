@@ -1,0 +1,67 @@
+<!-- <h1 style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #fff; background: cadetblue; border-radius: 20px; margin: 5px 5px 5px 5px; text-decoration: underline; padding: 10px 10px 10px 10px">Post Section</h1> -->
+<form class="post-user" #postForm="ngForm" (ngSubmit)="createPost(postForm)" style="margin-top: 10px; background: tan; border-radius: 20px; border:  solid #dbdbdb;" >
+
+  <div class="form-row"  style="text-align: center">
+    <div class="md-col-10" >
+      <input class="form-control" name="post" #post="ngModel" [(ngModel)]="userPost" placeholder="post" required>
+    </div>
+    <div class="md-col-2" style="text-align: center">
+      <button type="submit" [disabled] = "!postForm.valid" class="btn-comment">Post</button>
+    </div>
+  </div>
+  <div>
+      <ul class="list-group" *ngFor="let post of postList" [ngClass]="{'is-active': post.isActive}" >
+          <li class="list-group-item" style=" margin: 5px 0px" (click)="openComments(post)">
+            <div class="form-row">
+                <div class="col-md-10" style="text-align: center">
+                    {{post.post}}
+                </div> 
+                <div class="col-md-2">
+                    <img class="delete-icon" (click)="removePost(post)" style="text-align: right; width: 20px; height: 20px" src="../../assets/ic_delete.png"/>
+                </div>
+            </div>
+          </li>
+      </ul>
+    </div>  
+</form>
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap Modal --> 
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >Open modal </button> -->
+
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div> -->
