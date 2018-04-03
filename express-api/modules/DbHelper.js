@@ -132,18 +132,29 @@ con.connect((err)=> {
   }
 
   function deletePost(post_id, res){
-    let query = 'DELETE FROM '+POST_TABLE+" WHERE id = '"+post_id+"'";
-    con.query(query,(err,result)=> {
+    let commentDeleteQuery = "DELETE FROM "+COMMENTS+" WHERE post_id = "+post_id;
+    con.query(commentDeleteQuery,(err,result)=> {
         let response = {};
         if(err){
             console.log('error',err);
             response.error = 1;
             response.message = "deletion error";
             res.json(response);
+        }else{
+            let query = 'DELETE FROM '+POST_TABLE+" WHERE id = '"+post_id+"'";
+            con.query(query,(err, result)=> {
+                if(err){
+                    console.log('error',err);
+                    response.error = 1;
+                    response.message = "deletion error";
+                    res.json(response);
+                }else{
+                    response.error = -1;        
+                    response.message = "inserted";
+                    res.json(response);
+                }
+            });
         }
-        response.error = -1;        
-        response.message = "inserted";
-        res.json(response);
     });
   }
 

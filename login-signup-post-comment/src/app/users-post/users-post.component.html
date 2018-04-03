@@ -1,6 +1,6 @@
-<h1 style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #fff; background: cadetblue; border-radius: 20px; margin: 5px 5px 5px 5px; text-decoration: underline; padding: 10px 10px 10px 10px">Post Section</h1>
+<!-- <h1 style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #fff; background: cadetblue; border-radius: 20px; margin: 5px 5px 5px 5px; text-decoration: underline; padding: 10px 10px 10px 10px">Post Section</h1> -->
 <form class="post-user" #postForm="ngForm" (ngSubmit)="createPost(postForm)" style="margin-top: 10px; background: tan; border-radius: 20px; border:  solid #dbdbdb;" >
-  <div class="form-row"  style="text-align: center">
+  <div class="form-row"  style="text-align: center; width: 100%">
     <div class="md-col-10" >
       <input class="form-control" name="post" #post="ngModel" [(ngModel)]="userPost" placeholder="post" required>
     </div>
@@ -10,9 +10,9 @@
   </div>
   <div>
       <ul class="list-group" *ngFor="let post of postList" [ngClass]="{'is-active': post.isActive}" >
-          <li class="list-group-item" style=" margin: 5px 0px" (click)="openComments(post)">
+          <li class="list-group-item" style=" margin: 5px 0px" >
             <div class="form-row">
-                <div class="col-md-10" style="text-align: center">
+                <div class="col-md-10" style="text-align: center" (click)="openComments(post)">
                     {{post.post}}
                 </div> 
                 <div class="col-md-2">

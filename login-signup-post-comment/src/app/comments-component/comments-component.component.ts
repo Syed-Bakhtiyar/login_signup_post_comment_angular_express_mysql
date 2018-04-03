@@ -24,11 +24,17 @@ export class CommentsComponentComponent implements OnInit {
   }
 
   createComments(commentsForm: NgForm){
+    if(!commentsForm.value.comments){
+      alert("Don't Make Field Empty");
+      return;
+    }
     console.log(this.localStorage.getItem("post_id"),commentsForm.value.comments);
     this.modalAsService.createComment(this.localStorage.getItem("post_id"),commentsForm.value.comments)
     .subscribe((response)=>{
       console.log(response);
       this.getComments();
+      // commentsForm.value.comments = null;
+      commentsForm.reset();
     });
   }
 

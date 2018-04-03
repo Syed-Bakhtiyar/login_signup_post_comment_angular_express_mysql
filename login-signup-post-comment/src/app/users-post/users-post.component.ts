@@ -30,6 +30,7 @@ export class UsersPostComponent implements OnInit {
     this.modalAsService.createPost(this.id,form.value.post).subscribe((data)=>{
       console.log(data);
       this.getUsersPost();
+      form.reset();
     });
   }
 
