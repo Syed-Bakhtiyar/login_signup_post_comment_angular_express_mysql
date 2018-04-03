@@ -26,7 +26,7 @@ form.signUp{
     top: 50%;
     left: 50%;
 }
-button:hover,a.button:hover,.form-group,.delete-icon {
+button:hover,a.button:hover,.form-group,.delete-icon,.icon-delete,.list-group-item {
     cursor: pointer;
 }
 .post-user{

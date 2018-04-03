@@ -40,4 +40,11 @@ export class CommentsComponentComponent implements OnInit {
           console.log(this.comments_list);
       });
   }
+
+  deleteComments(comment){
+    this.modalAsService.deleteComments(comment.id).subscribe(response=>{
+      console.log(response);
+      this.getComments();
+    });
+  }
 }

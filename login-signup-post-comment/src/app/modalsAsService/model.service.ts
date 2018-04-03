@@ -61,4 +61,8 @@ export class ModelService {
   getComments(post_id){
     return this.http.get(this.URL_LOCAL+"getComment?post_id="+post_id).map(x=> x.json());
   }
+
+  deleteComments(comments_id){
+    return this.http.delete(this.URL_LOCAL+"deleteComment?comment_id="+comments_id).map(x=> x.json());
+  }
 }

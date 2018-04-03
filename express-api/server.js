@@ -41,6 +41,11 @@ app.get('/getComment',(req, res)=> {
     dbModule.getComments(req.query.post_id,res);
 });
 
+app.delete('/deleteComment',(req, res)=> {
+    console.log(req.query.comment_id);
+    dbModule.deleteComment(req.query.comment_id, res);
+});
+
 app.listen(3000, ()=>{
     console.log('Port Started On Port 3000');
 });

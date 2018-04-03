@@ -131,9 +131,23 @@ con.connect((err)=> {
     });
   }
 
+  function deletePost(post_id, res){
+    let query = 'DELETE FROM '+POST_TABLE+" WHERE id = '"+post_id+"'";
+    con.query(query,(err,result)=> {
+        let response = {};
+        if(err){
+            console.log('error',err);
+            response.error = 1;
+            response.message = "deletion error";
+            res.json(response);
+        }
+        response.error = -1;        
+        response.message = "inserted";
+        res.json(response);
+    });
+  }
+
   function postComments(post_id, comments,res){
-    // post_id MEDIUMINT NOT NULL, \
-    // comment
     let query = "INSERT INTO "+COMMENTS+"(post_id, comment) VALUES ("+post_id+",'"+comments+"')";
     con.query(query,(err, result)=> {
         let response = {};
@@ -170,8 +184,8 @@ con.connect((err)=> {
     });
   }
 
-  function deletePost(post_id, res){
-    let query = 'DELETE FROM '+POST_TABLE+" WHERE id = '"+post_id+"'";
+  function deleteComment(comment_id, res){
+    let query = 'DELETE FROM '+COMMENTS+" WHERE id = '"+comment_id+"'";
     con.query(query,(err,result)=> {
         let response = {};
         if(err){
@@ -186,6 +200,7 @@ con.connect((err)=> {
     });
   }
 
+
   module.exports = {
       getAuthenticatedUser,
       createUsers,
@@ -193,5 +208,6 @@ con.connect((err)=> {
       getUserPost,
       deletePost,
       postComments,
-      getComments
+      getComments,
+      deleteComment
   };
